@@ -1,0 +1,44 @@
+{
+	"manifest_version": 2,
+	"name": "AbuseDetector",
+	"description": "Abuse Detection Plugin for Gmail and Twitter",
+	"version": "1.0",
+	"permissions": [
+		"tabs",
+		"http://127.0.0.1:8000/",
+		"background",
+        "identity",
+        "notifications",
+        "storage",
+        "alarms",
+        "https://www.googleapis.com/*",
+        "https://*.googleusercontent.com/*"
+	],
+	"icons": { 
+		"16": "img/icon16.png",
+		"48": "img/icon48.png",
+		"128": "img/icon128.png" 
+	},
+	"browser_action": {
+		"default_icon": {                    
+			"19": "img/icon48.png",          
+			"38": "img/icon48.png"          
+		},
+		"default_popup": "popup.html"
+	},
+	"options_page": "options/dashboard.html",
+	"background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+	},
+	"content_security_policy": "script-src 'self' https://*.google.com 'unsafe-eval'; object-src 'self'",
+	"oauth2": {
+        "client_id": "373193737847-9kjad9s16jo091vjubek7fbi3u4ndoph.apps.googleusercontent.com",
+        "scopes": [
+            "profile",
+			"email",
+            "https://www.googleapis.com/auth/gmail.readonly"
+        ]
+    },
+	"key":"MIIEugIBADANBgkqhkiG9w0BAQEFAASCBKQwggSgAgEAAoIBAQCdsIQi8CKWCon9q9oQU2qmyswTy4KSVqhnA/74A74XbhgK2NuGeM7lib45wZ4gH8jz1K5FkUrONLhErUAPIikBDAJgbeKkL4azL2DbuH2CDqL/L/ZIPHDth7nsF0abN7HWZ4/RLYjiT2dC3jPhozEfwTbKJcgVni2wjY+UTcZUjREa06C5gtxemrAk8wqLtF6r6WGX5JuakOYFV9tb86ArqpcyTE5k+9fhMU4HnhZgy0ZonEWoLXe62HGTaXvHqTV1Z5ytO4xLny0LxmHETxpp0Tk2vC9YCowQzLXxLUpJAsZnclzX2Wfckp6MLYR283U5GCIGUtV27Unvl32wwd1RAgMBAAECgf8I1GJSueJ42Py/lRIQDSGZ9FDRq20rKPfodiKK1lA55gje6UOwULbeq1jPKAdLQUFLIvkhHVNRA2Womi5Rvk4VWYn/qwvtJ5S66/Em4l31exlgeX9J+H7UX8waEJn8INhjKAjeosir06TpvBNFOX6Pipm88RPXu6Qv2y+UYjykEvhWBYwPeSa/uB6ZMt6LFZ+/qycKl8OlfnQnLY9RTpgQbiGE5gddAoxNWQ7rodo9TaY+YzKg54N7WnvCsxB3ggjX83HBAUp0ujyzoTavDX6lvTTJDjDBF1YS0ahFRtqSj7Z+w7NXWx2XBwEYdYHmb7URaxpeVrdBaz5E98szATECgYEA0yELO4uH8ieaiPKp7HLF2G5KNw5O3ZDsQI2UxpdvrRuuxQ0OqCPSxiK9NburTl4ApNOVx0alcVFdDktsII3qs867uIIhsRoojYFnDKL0nQyFPRkyhSqZw24B3AGuin/hswmgIHTeK6ihdMJuXolgqHvj9GSDFqQvwkUKj2132HkCgYEAvzP4xyxhUulthMcU32QCRaGOy/uNiWhsYzzPsiRgthnsYniDeVOiCB4jv/rts23XQ0IUG978hd5b7jFr+wvOauNxyod/Q61S5EHPxsXpvowE5aE2BcWAM81JPHuPNd+GcgnyLvWm5uXDhSVp7BEPD5AHkUIAhL8pZEta9zqYJZkCgYBQ/GTlo2EzZzOlAohh1ajEm5HGSqu/295z6JtADkjdOzgwCBEuOAeazyqLGQDeH7rZfvv+I8BElnQ+jnnchvOXo15oqSopWCJkHVYdB8kTEQFu7WJuqGexClqWPOLp56H43mFY8dtjHd1I/2f8xW+ZUWSgk4mhPru/JmKln9UP6QKBgHI17jWy+dOX4bZ9YKdryrujHHQWJ95bRNsmWP4VIrvD0mKjkA0p+tCUiFBF6DTUuM/RKcfYM8kXIJywYsrLq5pHkBIlS8y2PJxh/2XBlLUgWFB+MpHR/ply13tMZygMA/gcntCUJgUoW9ktlw7OxctLAmovHbYtpeDl7kldc8KJAoGAR9qvsmReKRDLQ8YkV1yJ7hz/kexw1v8yfCEYnHXyo5fPLXqVOHk+fFoUrUnklxpgN2uxAbsSdLu5/HgfFCgujy0fcQxxk///b4fQFBcAp4TaLEN7ZGGg85I7RlYeoi3j3Y/KEwzn3FDo43IO8SVpeM2WRlMY5zW2hmM5S09E9Cg="
+}
