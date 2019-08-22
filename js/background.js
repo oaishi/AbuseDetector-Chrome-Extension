@@ -1,12 +1,12 @@
 var obj;
 
+var serverhost = 'http://ed937a48.ngrok.io' ;
 
 	chrome.runtime.onMessage.addListener(
 		function(request, sender, sendResponse) {
 		  if (request.contentScriptQuery == 'querylogin') {
 			  
-			  //var url = 'http://127.0.0.1:8000/ajax/validate_username/?username=pdkdpk&password=odkdl'
-			var url = 'http://127.0.0.1:8000/ajax/validate_username/?username='+
+			var url = serverhost + '/ajax/validate_username/?username='+
 				encodeURIComponent(request.itemId) + '&password=' + encodeURIComponent(request.itemPass);
 				
 			fetch(url)
@@ -19,7 +19,7 @@ var obj;
 		  
 		  else if (request.contentScriptQuery == 'queryregistration') {
 			  
-			var url = 'http://127.0.0.1:8000/ajax/validate_registration/?firstname='+
+			var url = serverhost + '/validate_registration/?firstname='+
 				encodeURIComponent(request.firstname) + '&lastname=' + encodeURIComponent(request.lastname) +
 				'&email='+ encodeURIComponent(request.email) + '&phone=' + encodeURIComponent(request.phone) +
 				'&gender='+ encodeURIComponent(request.gender) + '&country=' + encodeURIComponent(request.country) +
@@ -59,6 +59,12 @@ var obj;
 			  sendResponse({farewell: "response"});
 			  return true;
 			  
+		  }
+		  
+		  else if(request.contentScriptQuery == 'sendmails') {
+			  sendMessage('me', 'oaishi.faria@gmail.com', request.topic, request.mailbody );
+			  sendResponse({farewell: 'done'});
+			  return true; 
 		  }
 		  
 		  
@@ -128,7 +134,7 @@ function revokeToken() {
 	/**
 	 * Revoking the access token callback
 	 */
-	function revokeAuthTokenCallback(current_token) {
+function revokeAuthTokenCallback(current_token) {
 		if (!chrome.runtime.lastError) {
 
 			// Remove the local cached token
@@ -243,7 +249,7 @@ function appendMessageRow(message, token) {
 				if(m.includes("<div dir="))
 				{
 		
-						var url = 'http://127.0.0.1:8000/ajax/mail_receive/?htmlmail='+
+						var url = serverhost + '/ajax/mail_receive/?htmlmail='+
 						encodeURIComponent(m.replace(/(<([^>]+)>)/ig,""))+'&sender='+ encodeURIComponent(String(getHeader(message.payload.headers, 'From')))
 						+'&date='+ encodeURIComponent(String(getHeader(message.payload.headers, 'Date')))
 						+'&subject='+ encodeURIComponent(String(getHeader(message.payload.headers, 'Subject')));
@@ -359,6 +365,28 @@ function get(options) {
     // Set standard Google APIs authentication header.
     xhr.setRequestHeader('Authorization', 'Bearer ' + options.token);
     xhr.send();
+}
+
+function sendMessage(userId, to, subject, email) {
+    chrome.identity.getAuthToken({'interactive': true}, function(token) {
+        // load Google's javascript client libraries
+        var url = "https://www.googleapis.com/upload/gmail/v1/users/me/messages/send?access_token=" + token;
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState !== 4 || request.status !== 200) {
+				if(request.readyState === 3 && request.status !== 200){
+					console.log("successfully sent message");
+				}
+                return;
+            }
+        }
+        ;
+        request.open('POST', url, true);
+		request.setRequestHeader('Content-Type', 'message/rfc822');
+		request.setRequestHeader('Content-Transfer-Encoding', 'BASE64');
+		var parametros = 'From: B-Messenger \r\nTo: <'+to+'>\r\nSubject: =?utf-8?B?'+subject+'?=\r\nMIME-Version: 1.0\r\nContent-Type: text/html; charset=utf-8\r\nContent-Transfer-Encoding: BASE64\r\n\r\n'+email+'\r\n'
+        request.send(parametros);
+    });
 }
 
 /**

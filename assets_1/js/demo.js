@@ -15,6 +15,7 @@ $(document).ready(function(){
         }
     });
 
+
     $('.fixed-plugin .badge').click(function(){
 
         $wizard = $('.wizard-card');
