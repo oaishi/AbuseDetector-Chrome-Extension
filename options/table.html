@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>AbuseDetector Option Page</title>
+    <title>Citadel Option Page</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -43,7 +43,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="dashboard.html" class="simple-text">
-                        <img src="../icons/spam_64.png"><br>Abuse Detector
+                        <img src="../icons/spam_64.png"><br>Citadel
                     </a>
                 </div>
                 <ul class="nav">
@@ -142,57 +142,62 @@
                                 </div>
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover table-striped">
-                                        <thead>
-                                            <th>ID</th>
+                                        <thead>                             
                                             <th>Name</th>
                                             <th>Gmail</th>
-                                            
+                                            <th>Phone Number</th>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="list_contact">
                                             <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>a@gmail.com</td>
+                                                
+                                                <td id="name">Dakota Rice</td>
+                                                <td id="mail">a@gmail.com</td>
+												<td id="number">1</td>
                                                 <td>
 												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
                                             <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>b@gmail.com</td>
+                                                
+                                                <td id="name">Minerva Hooper</td>
+                                                <td id="mail">b@gmail.com</td>
+												<td id="number">2</td>
                                                 <td>
 												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>c@gmail.com</td>
+                                                
+                                                <td id="name">Sage Rodriguez</td>
+                                                <td id="mail">c@gmail.com</td>
+												<td id="number">3</td>
                                                 <td>
 												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
                                             <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>d@gmail.com</td>
+                                                
+                                                <td id="name">Philip Chaney</td>
+                                                <td id="mail">d@gmail.com</td>
+												<td id="number">4</td>
                                                 <td>
 												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
                                             <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>e@gmail.com</td>
+                                                
+                                                <td id="name">Doris Greene</td>
+                                                <td id="mail">e@gmail.com</td>
+												<td id="number">5</td>
                                                 <td>
 												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
                                             <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>f@gmail.com</td>
+                                                
+                                                <td id="name">Mason Porter</td>
+                                                <td id="mail">f@gmail.com</td>
+												<td id="number">6</td>
 												<td>
 												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
@@ -202,23 +207,37 @@
                                     </table>
                                 </div>
 								
+							<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Add New Trusted Contact</h4>
+							</div>
 							<div class="card-body">
-                                <form>
-                                    <div class="row">  
-                                        <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-                                               <input type="text" class="form-control" placeholder="enter new trusted contact">
+                                        <div class="row">
+                                            <div class="col-md-5 pr-1">
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" id="new_trust_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3 px-1">
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input type="text" class="form-control" id="new_trust_number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pl-1">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" class="form-control" id="new_trust_mail">
+                                                </div>
                                             </div>
                                         </div>
-										
-                                        <div class="col-md-6 pl-1">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-info btn-fill pull-right">Add</button>
-                                            </div>
-                                        </div>
-									</div>
-								</form>
+                                        <button type="addcontact" class="btn btn-info btn-fill pull-right" id="add_trust">Add to list</button>
+                                        <div class="clearfix"></div>
+								
+								
                             </div>
+							</div>
 								
 								
                             </div>
@@ -233,80 +252,66 @@
                                 <div class="card-body table-full-width table-responsive">
                                     <table class="table table-hover">
                                         <thead>
-                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Details</th>
                                             
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>1</td>
-                                                <td>Dakota Rice</td>
-                                                <td>a@gmail.com</td>
+                                             
+												<td id="name">Police</td>
+                                                <td id="mail">f@gmail.com</td>
                                                 <td>
-												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
+												<button type="submit_agency" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
                                             <tr>
-                                                <td>2</td>
-                                                <td>Minerva Hooper</td>
-                                                <td>b@gmail.com</td>
+                                                <td id="name">RAB</td>
+                                                <td id="mail">f@gmail.com</td>
                                                 <td>
-												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
+												<button type="submit_agency" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
                                             <tr>
-                                                <td>3</td>
-                                                <td>Sage Rodriguez</td>
-                                                <td>c@gmail.com</td>
+                                                <td id="name">NGO</td>
+                                                <td id="mail">f@gmail.com</td>
                                                 <td>
-												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
+												<button type="submit_agency" class="btn btn-info btn-fill pull-right">Remove</button>
 												</td>
                                             </tr>
-                                            <tr>
-                                                <td>4</td>
-                                                <td>Philip Chaney</td>
-                                                <td>d@gmail.com</td>
-                                                <td>
-												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
-												</td>
-                                            </tr>
-                                            <tr>
-                                                <td>5</td>
-                                                <td>Doris Greene</td>
-                                                <td>e@gmail.com</td>
-                                                <td>
-												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
-												</td>
-                                            </tr>
-                                            <tr>
-                                                <td>6</td>
-                                                <td>Mason Porter</td>
-                                                <td>f@gmail.com</td>
-                                                <td>
-												<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>
-												</td>
-                                            </tr>
+                                            
                                         </tbody>
                                     </table>
                                 </div>
-								<div class="card-body">
-                                <form>
-                                    <div class="row">  
-                                        <div class="col-md-6 pr-1">
-                                            <div class="form-group">
-                                               <input type="text" class="form-control" placeholder="enter new trusted company">
+								
+								
+							<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Add new Agency</h4>
+							</div>
+							<div class="card-body">
+										<form>
+                                        <div class="row">
+                                            <div class="col-md-6 pr-1">
+                                                <div class="form-group">
+                                                    <label>Name</label>
+                                                    <input type="text" class="form-control" id="name">
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6 pl-1">
+                                                <div class="form-group">
+                                                    <label for="exampleInputEmail1">Email address</label>
+                                                    <input type="email" class="form-control" id="mail">
+                                                </div>
                                             </div>
                                         </div>
-										
-                                        <div class="col-md-6 pl-1">
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-info btn-fill pull-right">Add</button>
-                                            </div>
-                                        </div>
-									</div>
-								</form>
+                                        <button type="addagency" class="btn btn-info btn-fill pull-right" id="add_trust">Add to list</button>
+                                        <div class="clearfix"></div>
+								
+								
                             </div>
+							</div>
 							
                             </div>
                         </div>

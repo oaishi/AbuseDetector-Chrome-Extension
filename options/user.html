@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>AbuseDetector Option Page</title>
+    <title>Citadel Option Page</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -43,7 +43,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="dashboard.html" class="simple-text">
-                        <img src="../icons/spam_64.png"><br>Abuse Detector
+                        <img src="../icons/spam_64.png"><br>Citadel
                     </a>
                 </div>
                 <ul class="nav">
@@ -143,20 +143,20 @@
 										<h4 class="card-title">Edit User Name</h4>
 									</div>
 									<div class="card-body">
-										<form>
+										
 											<div class="row">
 												
 												<div class="col-md-6 pr-1">
 													<div class="form-group">
 														<label>Username</label>
-														<input type="text" class="form-control" placeholder="Username" >
+														<input type="text" class="form-control" placeholder="Username" id="new_name" >
 													</div>
 												</div>
 											</div>
 											
-											<button type="submit" class="btn btn-info btn-fill pull-right">Update User Name</button>
+											<button type="editname" class="btn btn-info btn-fill pull-right" id="edit_name">Update User Name</button>
 											<div class="clearfix"></div>
-										</form>
+										
 									</div>
 								</div>
 							</div>
@@ -167,20 +167,20 @@
 										<h4 class="card-title">Edit Email Address</h4>
 									</div>
 									<div class="card-body">
-										<form>
+										
 											<div class="row">
 												
 												<div class="col-md-6 pr-1">
 													<div class="form-group">
 														<label>Email Address</label>
-														<input type="text" class="form-control" placeholder="a@gmail.com" >
+														<input type="text" class="form-control" placeholder="a@gmail.com" id="new_email">
 													</div>
 												</div>
 											</div>
 											
-											<button type="submit" class="btn btn-info btn-fill pull-right">Update Mail</button>
+											<button type="editemail" class="btn btn-info btn-fill pull-right" id="editemail">Update Mail</button>
 											<div class="clearfix"></div>
-										</form>
+										
 									</div>
 								</div>
 							</div>
@@ -191,29 +191,29 @@
 										<h4 class="card-title">Update Password</h4>
 									</div>
 									<div class="card-body">
-										<form>
+										
 											<div class="row">
 												
 												<div class="col-md-6 pr-1">
 													<div class="form-group">
 														<label>Old Password</label>
-														<input type="text" class="form-control" placeholder="Old Password" >
+														<input type="text" class="form-control" placeholder="Old Password" id="old_pass">
 													</div>
 												</div>
 												
 												<div class="col-md-6 pr-1">
 													<div class="form-group">
 														<label>New Password</label>
-														<input type="password" class="form-control" placeholder="New Password" >
+														<input type="password" class="form-control" placeholder="New Password" id="new_pass">
 													</div>
 												</div>
 												
 												
 											</div>
 											
-											<button type="submit" class="btn btn-info btn-fill pull-right">Update Password</button>
+											<button type="editpass" class="btn btn-info btn-fill pull-right" id="editpass">Update Password</button>
 											<div class="clearfix"></div>
-										</form>
+										
 									</div>
 								</div>
 							</div>
@@ -224,18 +224,17 @@
 										<h4 class="card-title">Edit Phone Number</h4>
 									</div>
 									<div class="card-body">
-										<form>
 											<div class="row">
 												
 												<div class="col-md-6 pr-1">
 													<div class="form-group">
 														<label>Phone Number</label>
-														<input type="text" class="form-control" placeholder="01xxxxxxxxx" >
+														<input type="text" class="form-control" placeholder="01xxxxxxxxx" id="newnum" >
 													</div>
 												</div>
 											</div>
 											
-											<button type="submit" class="btn btn-info btn-fill pull-right">Update Number</button>
+											<button type="editnum" class="btn btn-info btn-fill pull-right" id="newnum">Update Number</button>
 											<div class="clearfix"></div>
 										</form>
 									</div>
@@ -286,6 +285,6 @@
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.0 " type="text/javascript"></script>
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-<script src="../assets/js/demo.js"></script>
+<script src="../assets/js/editpage.js"></script>
 
 </html>

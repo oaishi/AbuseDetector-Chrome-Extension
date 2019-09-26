@@ -1,6 +1,8 @@
 var obj;
 
-var serverhost = 'http://ed937a48.ngrok.io' ;
+//var serverhost = 'http://127.0.0.1:8000';
+//var serverhost = 'https://492a2c2a.ngrok.io' ;
+var serverhost = 'http://5dcb31ca.ngrok.io' ;
 
 	chrome.runtime.onMessage.addListener(
 		function(request, sender, sendResponse) {
@@ -19,7 +21,7 @@ var serverhost = 'http://ed937a48.ngrok.io' ;
 		  
 		  else if (request.contentScriptQuery == 'queryregistration') {
 			  
-			var url = serverhost + '/validate_registration/?firstname='+
+			var url = serverhost + '/ajax/validate_registration/?firstname='+
 				encodeURIComponent(request.firstname) + '&lastname=' + encodeURIComponent(request.lastname) +
 				'&email='+ encodeURIComponent(request.email) + '&phone=' + encodeURIComponent(request.phone) +
 				'&gender='+ encodeURIComponent(request.gender) + '&country=' + encodeURIComponent(request.country) +
@@ -34,6 +36,112 @@ var serverhost = 'http://ed937a48.ngrok.io' ;
 			.catch(error =>  console.log(error))
 				
 			return true;  // Will respond asynchronously.
+		  }
+		  
+		  else if(request.contentScriptQuery == 'querytrust') {
+			  
+			  var url = serverhost + '/ajax/add_trusted_contact/?contact_name='+
+				encodeURIComponent(request.name) + '&contact_email=' + encodeURIComponent(request.mail) +
+				
+				'&priority=high'+ '&username=abc'+ '&contact_number=' + encodeURIComponent(request.number); // + encodeURIComponent(request.username);
+				
+				console.log(url);
+				
+				fetch(url)
+				.then(response => response.json())
+				.then(response => sendResponse({farewell: response}))
+				.catch(error =>  console.log(error))
+					
+				return true;  // Will respond asynchronously.
+		  }
+		  
+		  else if(request.contentScriptQuery == 'discard') {
+			  
+			  var url = serverhost + '/ajax/discarding/?sender='+
+				encodeURIComponent(request.sender) + '&username=abc'+ '&x=0'; // + encodeURIComponent(request.username);
+				
+				console.log(url);
+				
+				fetch(url)
+				.then(response => response.json())
+				.then(response => sendResponse({farewell: response}))
+				.catch(error =>  console.log(error))
+					
+				return true;  // Will respond asynchronously.
+		  }
+		  
+		  else if(request.contentScriptQuery == 'mark') {
+			  
+			   var url = serverhost + '/ajax/discarding/?sender='+
+				encodeURIComponent(request.sender) + '&username=abc'+ '&x=1'; // + encodeURIComponent(request.username);
+				
+				console.log(url);
+				
+				fetch(url)
+				.then(response => response.json())
+				.then(response => sendResponse({farewell: response}))
+				.catch(error =>  console.log(error))
+					
+				return true;  // Will respond asynchronously.
+		  }
+		  
+		  else if(request.contentScriptQuery == 'editname') {
+			  
+			  var url = serverhost + '/ajax/change_username/?newusername='+
+				encodeURIComponent(request.name) + '&oldusername=abcd'; // + encodeURIComponent(request.username);
+				
+				console.log(url);
+				
+				fetch(url)
+				.then(response => response.json())
+				.then(response => sendResponse({farewell: response}))
+				.catch(error =>  console.log(error))
+					
+				return true;  // Will respond asynchronously.
+		  }
+		  
+		  else if(request.contentScriptQuery == 'editmail') {
+			  
+			  var url = serverhost + '/ajax/change_email/?newemail='+
+				encodeURIComponent(request.mail) + '&oldusername=abc'; // + encodeURIComponent(request.username);
+				
+				console.log(url);
+				
+				fetch(url)
+				.then(response => response.json())
+				.then(response => sendResponse({farewell: response}))
+				.catch(error =>  console.log(error))
+					
+				return true;  // Will respond asynchronously.
+		  }
+		  
+		  else if(request.contentScriptQuery == 'editpass') {
+			  
+			  var url = serverhost + '/ajax/change_password/?newpassword='+
+				encodeURIComponent(request.new_pass)+ '&oldpassword='+ encodeURIComponent(request.old_pass) + '&oldusername=abc'; // + encodeURIComponent(request.username);
+				
+				console.log(url);
+				
+				fetch(url)
+				.then(response => response.json())
+				.then(response => sendResponse({farewell: response}))
+				.catch(error =>  console.log(error))
+					
+				return true;  // Will respond asynchronously.
+		  }
+		  else if(request.contentScriptQuery == 'editnum') {
+			  
+			  var url = serverhost + '/ajax/change_number/?newnumber='+
+				encodeURIComponent(request.newnum)+ '&oldusername=abc'; // + encodeURIComponent(request.username);
+				
+				console.log(url);
+				
+				fetch(url)
+				.then(response => response.json())
+				.then(response => sendResponse({farewell: response}))
+				.catch(error =>  console.log(error))
+					
+				return true;  // Will respond asynchronously.
 		  }
 		  
 		  else if(request.contentScriptQuery == 'revertlogin') {
@@ -62,7 +170,7 @@ var serverhost = 'http://ed937a48.ngrok.io' ;
 		  }
 		  
 		  else if(request.contentScriptQuery == 'sendmails') {
-			  sendMessage('me', 'oaishi.faria@gmail.com', request.topic, request.mailbody );
+			  sendMessage('me', request.to, 'Urgent Help', request.mailbody );
 			  sendResponse({farewell: 'done'});
 			  return true; 
 		  }
@@ -202,7 +310,7 @@ function getAuthTokenInteractiveCallback(token) {
  */
 function updateLabelCount(token) {
     get({
-        'url': 'https://www.googleapis.com/gmail/v1/users/me/threads?labelIds=INBOX&maxResults=5',
+        'url': 'https://www.googleapis.com/gmail/v1/users/me/threads?labelIds=INBOX&maxResults=10',
         'callback': updateLabelCountCallback,
         'token': token,
     });

@@ -1,18 +1,5 @@
 $().ready(function() {
 	
-	var count = 1;
-	var name = 'test';
-	var mail = 'test@gmail.com';
-	$('#list_contact').html(document.getElementById("list_contact").innerHTML+
-		'<tr>'+
-									'<td>' + name + '</td>' + 
-									'<td>' + mail + '</td>' + 
-									'<td>' + count.toString() + '</td>' +
-									'<td>' + 
-									'<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>'+
-									'</td>' +
-								'</tr>'
-		);
 		
     $sidebar = $('.sidebar');
     $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -25,55 +12,10 @@ $().ready(function() {
 
     fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
 
-	$('button[type="submit"]').click(function(e){
-		
-		var sender = $(this).closest('tr').find('#name').text();
-		var subject = $(this).closest('tr').find('#mail').text();	
-		//var message = $(this).closest('tr').find('#message').text();	
-		
-		$(this).closest('tr').remove();
-		demo.showAlertBox('bottom','right' , subject + ' removed from list!' );
-		//e.returnValue = true;
-	});
-	
-	$('button[type="addcontact"]').click(function(e){
-		//e.preventDefault();
-		
-		var name = document.getElementById("new_trust_name").value;
-		var number = document.getElementById("new_trust_number").value;
-		var mail = document.getElementById("new_trust_mail").value;
-		
-		
-		$('#list_contact').html(document.getElementById("list_contact").innerHTML+
-		'<tr>'+
-									'<td>' + name + '</td>' + 
-									'<td>' + mail + '</td>' + 
-									'<td>' + number + '</td>' +
-									'<td>' + 
-									'<button type="submit" class="btn btn-info btn-fill pull-right">Remove</button>'+
-									'</td>' +
-								'</tr>'
-		);
-		
-		chrome.runtime.sendMessage(
-		{contentScriptQuery: 'querytrust' , name: name , mail: mail, number: number},
-		function(response) {
-			result = response.farewell;
-			alert(result.raw);
-		}	);
-		
-		document.getElementById("new_trust_name").value = ' ';
-		document.getElementById("new_trust_number").value = ' ';
-		document.getElementById("new_trust_mail").value = ' ';
-		
-	});
-	
 	$('button[type="editname"]').click(function(e){
 		//e.preventDefault();
 		
 		var name = document.getElementById("new_name").value;
-
-		alert(name);
 		
 		chrome.runtime.sendMessage(
 		{contentScriptQuery: 'editname' , name: name },
@@ -83,6 +25,56 @@ $().ready(function() {
 		}	);
 		
 		document.getElementById("new_name").value = ' ';
+		
+	});
+	
+	$('button[type="editemail"]').click(function(e){
+		//e.preventDefault();
+		
+		var mail = document.getElementById("new_email").value;
+		
+		chrome.runtime.sendMessage(
+		{contentScriptQuery: 'editmail' , mail: mail },
+		function(response) {
+			result = response.farewell;
+			alert(result.raw);
+		}	);
+		
+		document.getElementById("new_email").value = ' ';
+		
+	});
+	
+	$('button[type="editpass"]').click(function(e){
+		//e.preventDefault();
+		
+		var old_pass = document.getElementById("old_pass").value;
+		var new_pass = document.getElementById("new_pass").value;
+		
+		chrome.runtime.sendMessage(
+		{contentScriptQuery: 'editpass' , old_pass: old_pass , new_pass: new_pass },
+		function(response) {
+			result = response.farewell;
+			alert(result.raw);
+		}	);
+		
+		document.getElementById("old_pass").value = ' ';
+		document.getElementById("new_pass").value = ' ';
+		
+	});
+	
+	$('button[type="editnum"]').click(function(e){
+		//e.preventDefault();
+		
+		var newnum = document.getElementById("newnum").value;
+		
+		chrome.runtime.sendMessage(
+		{contentScriptQuery: 'editnum' , newnum: newnum},
+		function(response) {
+			result = response.farewell;
+			alert(result.raw);
+		}	);
+		
+		document.getElementById("newnum").value = ' ';
 		
 	});
 
@@ -195,57 +187,3 @@ $().ready(function() {
         }
     });
 });
-
-type = ['primary', 'info', 'success', 'warning', 'danger'];
-
-demo = {
-    initPickColor: function() {
-        $('.pick-class-label').click(function() {
-            var new_class = $(this).attr('new-class');
-            var old_class = $('#display-buttons').attr('data-class');
-            var display_div = $('#display-buttons');
-            if (display_div.length) {
-                var display_buttons = display_div.find('.btn');
-                display_buttons.removeClass(old_class);
-                display_buttons.addClass(new_class);
-                display_div.attr('data-class', new_class);
-            }
-        });
-    },
-
-    
-    showNotification: function(from, align) {
-        color = Math.floor((Math.random() * 4) + 1);
-
-        $.notify({
-            icon: "nc-icon nc-app",
-            message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
-
-        }, {
-            type: type[color],
-            timer: 8000,
-            placement: {
-                from: from,
-                align: align
-            }
-        });
-    },
-	
-	showAlertBox: function(from, align, message_info) {
-        color = Math.floor((Math.random() * 4) + 1);
-
-        $.notify({
-            icon: "nc-icon nc-app",
-            message: message_info
-
-        }, {
-            type: type[color],
-            timer: 8000,
-            placement: {
-                from: from,
-                align: align
-            }
-        });
-    }
-	
-}

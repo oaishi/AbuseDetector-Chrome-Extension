@@ -6,6 +6,7 @@
 	"permissions": [
 		"tabs",
 		"http://127.0.0.1:8000/",
+		"https://*.ngrok.io/*",
 		"http://*.ngrok.io/*",
 		"background",
         "identity",
