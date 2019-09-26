@@ -1,6 +1,6 @@
 <img src="https://image.flaticon.com/icons/svg/144/144875.svg" width="100"> 	
 
- # AbuseDetector-Chrome-Extension	# AbuseDetector-Chrome-Extension
+ # AbuseDetector-Chrome-Extension	
 
 
  A chrome extension for automatic detection and filtration of abusive mails and tweets. The abuser can also block a certain sender and ask for help from authorities. 	
