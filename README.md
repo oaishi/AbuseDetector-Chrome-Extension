@@ -1,4 +1,4 @@
-<img src="https://image.flaticon.com/icons/svg/144/144875.svg" width="100"> 	
+<img src="https://github.com/oaishi/Citadel/blob/master/icons/spam_128.png" width="100"> 	
 
  # AbuseDetector-Chrome-Extension	
 
