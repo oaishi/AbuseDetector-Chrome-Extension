@@ -3,7 +3,7 @@
  # AbuseDetector-Chrome-Extension	
 
 
- A chrome extension for automatic detection and filtration of abusive mails and tweets. The abuser can also block a certain sender and ask for help from authorities. 	
+ A chrome extension for automatic detection and filtration of abusive mails and tweets. The abuser can also ask for help from authorities. 	
 
  ## Resources	
 
