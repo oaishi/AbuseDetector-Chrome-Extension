@@ -91,7 +91,7 @@ $(document).on("click","input[value='Ask for help!']", function(){
 	
 	
 	var mailmessage = 'Hi, <br>I need your help on an urgent matter. I got a mail from ' + sender + ' on ' + date + ' that potentially contains '+
-	'some sort of abuse. The contents of the email is appended below. <br><br>' +'<b><i>Subject: ' + subject +'<br><br>Text: <font color="red">'+ message+'</font></i></b>';
+	'some sort of abuse. The contents of the email is appended below. <br><br>' +'Subject: ' + subject +'<br><br>Text: '+ message;
 		
 		
 		
@@ -134,7 +134,6 @@ chrome.runtime.onMessage.addListener(
 			  response = request.reply;
 			  
 			  var is_abusive = response.is_taken;
-			  var thres = response.thres
 			  
 			  ///
 			  
@@ -175,12 +174,12 @@ chrome.runtime.onMessage.addListener(
 			
 			  var params = '';
 	  
-			if(Toxic>thres) params += makemesvg(Toxic, 'Toxicity');
-			if(Severe_Toxic>thres) params += makemesvg(Severe_Toxic, 'Severe-Toxicity');
-			if(Threat>thres) params += makemesvg(Threat, 'Threat');
-			if(Insult>thres) params += makemesvg(Insult, 'Insult');					
-			if(Identity_Hate>thres) params += makemesvg(Identity_Hate, 'Hate'); 
-			if(Obscene>thres) params += makemesvg(Obscene, 'Obscene');
+			if(Toxic>50.0) params += makemesvg(Toxic, 'Toxicity');
+			if(Severe_Toxic>50.0) params += makemesvg(Severe_Toxic, 'Severe-Toxicity');
+			if(Threat>50.0) params += makemesvg(Threat, 'Threat');
+			if(Insult>50.0) params += makemesvg(Insult, 'Insult');					
+			if(Identity_Hate>50.0) params += makemesvg(Identity_Hate, 'Hate'); 
+			if(Obscene>50.0) params += makemesvg(Obscene, 'Obscene');
 			
 			//params += ''
 			
