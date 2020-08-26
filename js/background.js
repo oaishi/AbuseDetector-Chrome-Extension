@@ -2,7 +2,6 @@ var obj;
 
 //var serverhost = 'http://127.0.0.1:8000';
 //var serverhost = 'https://492a2c2a.ngrok.io' ;
-var serverhost = 'https://1d025ddc1c49.ngrok.io' ;
 
 	chrome.runtime.onMessage.addListener(
 		function(request, sender, sendResponse) {
