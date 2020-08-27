@@ -2,27 +2,8 @@
 
  # AbuseDetector-Chrome-Extension	
 
+ A chrome extension for automatic detection and filtration of abusive mails and tweets. The abuser can also ask for help from authorities. 
 
- A chrome extension for automatic detection and filtration of abusive mails and tweets. The abuser can also ask for help from authorities. 	
-
- ## Resources	
-
- - [Gmail API](https://github.com/GoogleDeveloperExperts/chrome-extension-google-apis) for user authentication, mail extraction 	
-
- - [Cross Origin Connection](https://developers.chrome.com/extensions/xhr) with Django server	
-
- - [Chrome runtime events](https://developer.chrome.com/apps/runtime)	
-
- - [Login template](https://colorlib.com/wp/template/login-form-v1/)	
-
- - [Registration template](https://colorlib.com/etc/regform/colorlib-regform-4/)	
-
- - [Dashboard](https://www.creative-tim.com/product/light-bootstrap-dashboard#)	
-
- - [Notification Window](https://www.creative-tim.com/product/paper-bootstrap-wizard?partner=114912)	
-
- - [Slider Window](http://www.menucool.com/slider/javascript-image-slider-demo1)
+ To know how to install and use our extension, please see in the wiki - [https://github.com/oaishi/AbuseDetector-Chrome-Extension/wiki/Installation-and-Usage-Instruction](https://github.com/oaishi/AbuseDetector-Chrome-Extension/wiki/Installation-and-Usage-Instruction)
  
- - [Send Mail using Gmail API](https://github.com/igorgum/gadget9)
- 
- - [Svg donut chart](https://medium.com/@heyoka/scratch-made-svg-donut-pie-charts-in-html5-2c587e935d72)
+ To setup and Gmail API and OAuth Screen, please see in the wiki - [https://github.com/oaishi/AbuseDetector-Chrome-Extension/wiki/Gmail-API-and-OAuth-Configuration](https://github.com/oaishi/AbuseDetector-Chrome-Extension/wiki/Gmail-API-and-OAuth-Configuration)
